@@ -1,4 +1,6 @@
-from significance_measures import pmi
+'''
+functions are steps in creating distributional thesaurus
+'''
 
 def significance_le_cf_stanford(func, elements, context, bims):
     significance = {}
@@ -13,11 +15,40 @@ def significance_le_cf_stanford(func, elements, context, bims):
         if not w1 in significance:
             significance[w1] = {}
         if not c1 in significance[w1]:
-            significance[w1][c1] = pmi(elements[w1], context[c1], bims[bim])
+            significance[w1][c1] = func(elements[w1], context[c1], bims[bim])
 
         if not w2 in significance:
             significance[w2] = {}
         if not c2 in significance[w2]:
-            significance[w2][c2] = pmi(elements[w2], context[c2], bims[bim])
+            significance[w2][c2] = func(elements[w2], context[c2], bims[bim])
 
     return significance
+
+def aggregate_per_feature(significance, elements, context, pruning_limit):
+    agg_per_feature = {}
+
+    for c in context:
+        agg_per_feature[c] = []
+        for w in elements:
+            if c in significance[w]:
+                if significance[w][c] > pruning_limit:
+                    agg_per_feature[c].append(w)
+
+    return agg_per_feature
+
+def similarity_count(agg_per_feature, elements, context):
+    similarity_count = {}
+
+    for c in agg_per_feature:
+        array = agg_per_feature[c]
+        for w1 in array:
+            for w2 in array:
+                if w1 != w2 and w1 in array and w2 in array:
+                    if not w1 in similarity_count:
+                        similarity_count[w1] = {}
+                    if not w2 in similarity_count[w1]:
+                        similarity_count[w1][w2] = 1
+                    else:
+                        similarity_count[w1][w2] += 1
+
+    return similarity_count

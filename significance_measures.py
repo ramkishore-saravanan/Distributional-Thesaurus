@@ -11,6 +11,13 @@ def pmi(p_x, p_y, p_x_y):
     except ZeroDivisionError:
         return -1
 
+def npmi(p_x, p_y, p_x_y):
+    try:
+        return log(p_x_y/(p_x * p_y))/(-log(p_x_y) + 0.000000001)
+    except ZeroDivisionError:
+        return -1
+
+
 def ll():
     pass
 
