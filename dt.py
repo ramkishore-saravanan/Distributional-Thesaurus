@@ -5,7 +5,7 @@ Distributional thesaurus
 '''
 
 from stanfordHolingOp import stanford_le_ce as context_element_loader_from
-
+from significance_measures import pmi
 # load corpus
 corpus = []
 
