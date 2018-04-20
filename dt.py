@@ -8,7 +8,8 @@ from stanfordHolingOp import stanford_le_ce as context_element_loader_from
 from significance_measures import pmi, ll, lmi, freq
 from dt_functions import significance_le_cf_stanford
 
-def create_distributional_thesaurus(corpus):
+def create_distributional_thesaurus(corpus,
+                                    pruning=0):
     context, elements, bims = context_element_loader_from(corpus)
 
     # 1. pmi can be replaced with any other similarity measure
@@ -19,9 +20,8 @@ def create_distributional_thesaurus(corpus):
                                                elements=elements,
                                                context=context,
                                                bims=bims)
-    for i in significance:
-        for j in significance[i]:
-            print i, " ", j, " ", significance[i][j]
+
+    # add pruning later, for pmi highest is 0.0
 
 if __name__ == "__main__":
     corpus = ["I saw an elephant in the park",

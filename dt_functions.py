@@ -2,6 +2,7 @@ from significance_measures import pmi
 
 def significance_le_cf_stanford(func, elements, context, bims):
     significance = {}
+    highest = 0
     for bim in bims:
         c1 = ("@", bim[1], bim[2])
         c2 = (bim[0], bim[1], "@")
