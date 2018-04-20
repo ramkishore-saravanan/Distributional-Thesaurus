@@ -27,7 +27,7 @@ def stanford_le_ce(corpus):
             # for le, cf pairs
             
             if not dependency in bims:
-                bims[dependency] = 1
+                bims[dependency] = 1.
             else:
                 bims[dependency] += 1
 
@@ -35,13 +35,13 @@ def stanford_le_ce(corpus):
             
             c1 = ("@", dependency[1], dependency[2])
             if not c1 in context:
-                context[c1] = 1
+                context[c1] = 1.
             else:
                 context[c1] += 1
 
             c2 = (dependency[0], dependency[1], "@")
             if not c2 in context:
-                context[c2] = 1
+                context[c2] = 1.
             else:
                 context[c2] += 1
 
@@ -51,12 +51,12 @@ def stanford_le_ce(corpus):
             w2 = dependency[2]
 
             if not w1 in elements:
-                elements[w1] = 1
+                elements[w1] = 1.
             else:
                 elements[w1] += 1
 
             if not w2 in elements:
-                elements[w2] = 1
+                elements[w2] = 1.
             else:
                 elements[w2] += 1
 
