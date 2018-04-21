@@ -1,6 +1,11 @@
 '''
 Similarity measures used in JoBim text
-I use only pmi, othes are to be implemented
+Only pmi and npmi are implemented 
+othes are to be implemented
+
+Author: Ramkishore S
+Computational Linguistics II - Assignment 3:
+Distributional thesaurus
 '''
 
 from math import log
@@ -19,7 +24,6 @@ def npmi(p_x, p_y, p_x_y):
     except ZeroDivisionError:
         return -1
 
-
 def ll():
     pass
 
@@ -28,6 +32,6 @@ def lmi():
 
 def freq():
     pass
-    
+
 if __name__ == "__main__":
     assert(pmi(2., 1., 1.) == log(1./2.))

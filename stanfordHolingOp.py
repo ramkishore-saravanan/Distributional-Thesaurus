@@ -1,8 +1,14 @@
 '''
-author: Ramkishore S
+Corresponds to first five tables in the JoBimText Creation process
+1. Sentence
+2. Context Feature Extractor
+3. Language Element Count
+4. Context Feature Count
+5. Language Element - Context Feature Count
+
+Author: Ramkishore S
 Computational Linguistics II - Assignment 3:
 Distributional thesaurus
-Part 1: Holing Operation on stanford dependency parser output
 '''
 
 # le = language element
@@ -22,6 +28,7 @@ def dict_update(token, dic):
 # Arguments: corpus, an array of sentences.
 # Applies holing op and returns appropriate vars
 def stanford_le_ce(corpus):
+    '''holing Op on corpus'''
     global count
     context = {}
     elements = {}
@@ -34,7 +41,6 @@ def stanford_le_ce(corpus):
         for dependency in list(dep.triples()):
 
             # create context features and language elements for each dependency
-            
             c1 = ("@", dependency[1], dependency[2])
             c2 = (dependency[0], dependency[1], "@")
             w1 = dependency[0]
@@ -60,6 +66,7 @@ def stanford_le_ce(corpus):
 # takes in list of parsed sentences as input
 # applies holing op and returns appropriate vars
 def holingOp(parserOutput):
+    '''holing Op on parsed data'''
     context = {}
     elements = {}
     bims = {}
@@ -67,7 +74,7 @@ def holingOp(parserOutput):
     for dependencies in parserOutput:
         for dependency in dependencies:
     
-            # for le, cf pairs
+            # create context features and language elements for each dependency
             c1 = ("@", dependency[1], dependency[2])
             c2 = (dependency[0], dependency[1], "@")
             w1 = dependency[0]
@@ -87,14 +94,4 @@ if __name__ == "__main__":
           "We saw the elephant ."]
 
     context, elements, bims = stanford_le_ce(corpus)
-
-    print ""
-    for i in context:
-        print i, context[i]
-    print ""
-    for i in elements:
-        print i, elements[i]
-
-    print ""
-    for i in bims:
-        print i, bims[i]
+    print context, elements, bims
