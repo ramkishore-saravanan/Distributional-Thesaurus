@@ -6,12 +6,14 @@ I use only pmi, othes are to be implemented
 from math import log
 
 def pmi(p_x, p_y, p_x_y):
+    '''Point wise Mutual Information'''
     try:
         return log(p_x_y/(p_x * p_y))
     except ZeroDivisionError:
         return -1
 
 def npmi(p_x, p_y, p_x_y):
+    '''Normalized pointwise mutual information'''
     try:
         return log(p_x_y/(p_x * p_y))/(-log(p_x_y) + 0.000000001)
     except ZeroDivisionError:

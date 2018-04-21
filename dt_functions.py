@@ -6,12 +6,15 @@ def significance_le_cf_stanford(func, elements, context, bims):
     significance = {}
     highest = 0
     for bim in bims:
+
+        # create corresponding contexts and words
+        # much more efficient than searching elements and contexts dict
         c1 = ("@", bim[1], bim[2])
         c2 = (bim[0], bim[1], "@")
-
         w1 = bim[0]
         w2 = bim[2]
 
+        # calculate significance scores using the func passed in params
         if not w1 in significance:
             significance[w1] = {}
         if not c1 in significance[w1]:
@@ -27,10 +30,14 @@ def significance_le_cf_stanford(func, elements, context, bims):
 def aggregate_per_feature(significance, elements, context, pruning_limit):
     agg_per_feature = {}
 
+    # aggregating language elements by the contexts they occur in
     for c in context:
         agg_per_feature[c] = []
         for w in elements:
             if c in significance[w]:
+                # pruning is applied, note that pruning limit will depend on the function
+                # used in significance_le_ce_stanford
+                # different functions return values in different ranges
                 if significance[w][c] > pruning_limit:
                     agg_per_feature[c].append(w)
 
