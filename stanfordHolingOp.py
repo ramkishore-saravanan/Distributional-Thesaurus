@@ -6,7 +6,7 @@ Corresponds to first five tables in the JoBimText Creation process
 4. Context Feature Count
 5. Language Element - Context Feature Count
 
-Author: Ramkishore S
+Author: Ramkishore Saravanan
 Computational Linguistics II - Assignment 3:
 Distributional thesaurus
 '''

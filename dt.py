@@ -1,5 +1,5 @@
 '''
-Author: Ramkishore S
+Author: Ramkishore Saravanan
 Computational Linguistics II - Assignment 3:
 Distributional thesaurus
 
@@ -13,17 +13,17 @@ from dt_functions import significance_le_cf_stanford, \
 
 # ----------------- Parsed data of mouse corpus --------------------
 
-from output import sentence as parserOutput1
-from output2 import sentence as parserOutput2
-from output3 import sentence as parserOutput3
-from output4 import sentence as parserOutput4
-from output5 import sentence as parserOutput5
+from parsed.output import sentence as parserOutput1
+from parsed.output2 import sentence as parserOutput2
+from parsed.output3 import sentence as parserOutput3
+from parsed.output4 import sentence as parserOutput4
+from parsed.output5 import sentence as parserOutput5
 
 # ==================================================================
 
 def create_distributional_thesaurus(corpus=None,
-                                    pruning=-30,
-                                    min_sim_count=1):
+                                    pruning=-10,
+                                    min_sim_count=3):
     ''' creating JoBimText thesaurus '''
     # Steps 1 to 5 in JoBimText creation process
     # if no corpus is passed, mouse corpus's parsed data is used
@@ -92,4 +92,4 @@ def main(debug=True):
         create_distributional_thesaurus()
 
 if __name__ == "__main__":
-    main(debug=True)
+    main(debug=False)

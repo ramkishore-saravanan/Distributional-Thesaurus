@@ -3,7 +3,7 @@ Similarity measures used in JoBim text
 Only pmi and npmi are implemented 
 othes are to be implemented
 
-Author: Ramkishore S
+Author: Ramkishore Saravanan
 Computational Linguistics II - Assignment 3:
 Distributional thesaurus
 '''

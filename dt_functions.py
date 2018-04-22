@@ -1,17 +1,17 @@
 '''
-Author: Ramkishore S
-Computational Linguistics II - Assignment 3:
-Distributional thesaurus
-
-Functions correspond to tables 6 to 8 in JoBimText Creation process
+Functions correspond to tables 6 to 9 in JoBimText Creation process
 5. Frequency significance measure: significance_le_cf_stanford(...)
 6. Pruning: done when aggregating
 7. Aggregating per feature: aggregate_per_feature(...)
 8. Similarity Count: similarity_count(...)
+
+Author: Ramkishore Saravanan
+Computational Linguistics II - Assignment 3:
+Distributional thesaurus
 '''
 
 def significance_le_cf_stanford(func, elements, context, bims):
-    '''Step 5'''
+    '''Step 6'''
     significance = {}
     highest = 0
     for bim in bims:
@@ -37,7 +37,7 @@ def significance_le_cf_stanford(func, elements, context, bims):
     return significance
 
 def aggregate_per_feature(significance, elements, context, pruning_limit):
-    '''Step 6 and 7'''
+    '''Step 7 and 8'''
     agg_per_feature = {}
 
     # aggregating language elements by the contexts they occur in
@@ -54,7 +54,7 @@ def aggregate_per_feature(significance, elements, context, pruning_limit):
     return agg_per_feature
 
 def similarity_count(agg_per_feature, elements, context):
-    '''Step 8'''
+    '''Step 9'''
     similarity_count = {}
 
     for c in agg_per_feature:
