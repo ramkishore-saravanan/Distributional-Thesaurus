@@ -5,6 +5,7 @@ __pycache__/
 *.py\~
 .DS_Store
 *\~
+*thesaurus.db*
 
 # user data files
 data
